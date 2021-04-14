@@ -2,16 +2,18 @@
 
 {% block content %}
 
-  <h1 class="posttitle">{{post.title}}</h1>
-    {% if not post.published_date == none %}
-      <div class="date postdate">
-        {{ post.published_date }}
-      </div>
-    {% else %}
-      <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default"> Publicar </a>
-    {% endif %}
+  <div class="flexcontainer">
+    <h1 class="posttitle">{{post.title}}</h1>
+      {% if not post.published_date == none %}
+        <div class="date postdate">
+          {{ post.published_date }}
+        </div>
+      {% else %}
+        <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary"> Publicar </a>
+      {% endif %}
+  </div>
 
-    <p class="postcontent">{{post.title|safe|linebreaksbr}}</p>
+    <p class="postcontent">{{post.text|safe|linebreaksbr}}</p>
 
     {% if user.is_authenticated %}
 

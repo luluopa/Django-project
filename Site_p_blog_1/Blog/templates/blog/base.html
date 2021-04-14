@@ -16,41 +16,38 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
   </head>
 
   <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-default custom-navbar">
+    <nav class="navbar navbar-dark bg-dark navbar-expand">
 
-      <div class="container">
+      <div class="container navbar navbar-default">
         <ul class="nav navbar-nav">
-          <li> <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a> </li>
-          <li> <a class="navbar-brand bigbrand" href="{% url 'about' %}">About</a> </li>
-          <li> <a href="https://github.com/luluopa">Github</a> </li>
-          <li> <a href="https://www.linkedin.com/in/lucas-lima-61877a1a3/">LinkedIn</a> </li>
+          <li class="nav-item"> <a class="navbar-brand" href="{% url 'post_list' %}">My Blog</a> </li>
+          <li class="nav-item"> <a class="navbar-brand" href="{% url 'about' %}">About</a> </li>
+          <li class="nav-item"> <a class="item" href="https://github.com/luluopa">Github</a> </li>
+          <li class="nav-item"> <a class="item" href="https://www.linkedin.com/in/lucas-lima-61877a1a3/">LinkedIn</a> </li>
         </ul>
 
         <!-- Login Required -->
-        <ul class="nav navbar-nav navbar-right">
-
+        <ul class="nav navbar-nav">
           {% if user.is_authenticated %}
-            <li> <a href="{% url 'post_new' %}"> New Post </a> </li>
-            <li> <a href="{% url 'post_draft_list' %}"> Draft </a> </li>
-            <li> <a href="{% url 'logout' %}"> Logout </a> </li>
-            <li> <a> Welcome: {{user.username}} </a> </li>
+            <li class="nav-item"> <a class="item" href="{% url 'post_new' %}"> New Post </a> </li>
+            <li class="nav-item"> <a class="item" href="{% url 'post_draft_list' %}"> Draft </a> </li>
+            <li class="nav-item"> <a class="item" href="{% url 'logout' %}"> Logout </a> </li>
+            <li class="nav-item"> <a class="item"> Welcome: {{user.username}} </a> </li>
           {% else %}
-            <li> <a  class="nav navbar-right" href="{% url 'login' %}"> Login </a> </li>
+            <li class="nav-item"> <a class="nav navbar-right" id="content" href="{% url 'login' %}"> <img src="https://banner2.cleanpng.com/20180618/pkf/kisspng-computer-icons-user-user-icon-5b27870a5bb442.3487058215293171303756.jpg" alt=""> </a> </li>
           {% endif %}
-
         </ul>
-
       </div>
 
     </nav>
